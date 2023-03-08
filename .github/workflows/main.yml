@@ -54,15 +54,15 @@ jobs:
         # Запуск скрипта авторизации на Docker Hub
         uses: docker/login-action@v1
         with:
-          # username: ${{ secrets.DOCKER_USERNAME }}
-          username: alexandrmaltsev
+          username: ${{ secrets.DOCKER_USERNAME }}
+          # username: alexandrmaltsev
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push to Docker Hub
         # Пуш образа в Docker Hub
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: alexandrmaltsev/infra_actions
+          tags: ${{ secrets.DOCKER_USERNAME }}/infra_actions
 
   deploy:
     runs-on: ubuntu-latest
